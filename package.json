@@ -1,0 +1,20 @@
+{
+  "name": "protrade-solution",
+  "version": "1.0.0",
+  "description": "ProTrade Solution - Informational website for a flooring business",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=11.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && node scripts/generate-sitemap.mjs",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

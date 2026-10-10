@@ -216,3 +216,45 @@ Inspired by official Nepal flag colors (#003893 Blue, #DC143C Red). Bold, distin
 **Rationale:**
 Bold and distinctive. Strong national identity (Nepal flag colors). Professional with energetic accents. Clear hierarchy (navy for structure, red for action). More vibrant than coffee palette, appeals to brands wanting strong visual identity.
 
+# Commands
+
+Development and deployment commands. All commands should be run from the project root.
+
+## Development
+
+```bash
+npm run dev
+```
+Starts the Vite dev server on http://localhost:5173 with hot reload.
+
+## Building
+
+```bash
+npm run build
+```
+Compiles TypeScript, bundles with Vite, and generates the sitemap. Output goes to `dist/`.
+
+## Quality checks
+
+```bash
+npm run lint
+```
+Runs ESLint on all `.ts` and `.tsx` files. Fix auto-fixable issues with `eslint . --fix`.
+
+```bash
+npm run format
+```
+Formats code with Prettier (JS, TS, JSON, CSS, Markdown).
+
+```bash
+npm run format:check
+```
+Checks formatting without making changes (useful in CI).
+
+## Preview
+
+```bash
+npm run preview
+```
+Builds the site and serves `dist/` locally to preview the production build.
+
