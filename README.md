@@ -52,16 +52,57 @@ src/
 
 ## Deployment
 
-### First time setup
-1. Create a Cloudflare Pages project
-2. Connect the GitHub repo
-3. Set build command: `npm run build`
-4. Set publish directory: `dist/`
+### Infrastructure
+- **Hosting:** Cloudflare Pages
+- **Domain:** protradesolution.com.au (www is canonical, apex redirects to www)
+- **DNS:** Cloudflare (set up after first successful Pages deploy)
 
-### Promotion process (after v1.0.0)
-1. Open a PR from `main` → `release`
-2. Ensure CI passes (lint, type check, build, accessibility)
-3. Merge to `release` (auto-deploys via GitHub Actions)
+### First-time setup (Sam only)
+1. **Create Cloudflare Pages project**
+   - Go to Cloudflare > Pages > Create a project
+   - Connect the GitHub repo (dotnepal/protrade-solution)
+   - Set build command: `npm run build`
+   - Set publish directory: `dist/`
+   - Deploy to generate a `*.pages.dev` URL
+
+2. **Add GitHub repo secrets**
+   - Go to GitHub > Settings > Secrets and variables > Actions
+   - Add `CLOUDFLARE_API_TOKEN` (create in Cloudflare > Account > API Tokens)
+   - Add `CLOUDFLARE_ACCOUNT_ID` (from Cloudflare account settings)
+
+3. **Configure DNS** (after first successful deploy)
+   - Point `www.protradesolution.com.au` to Cloudflare
+   - Add custom domain to Pages project settings
+   - Set apex (`protradesolution.com.au`) to 301 redirect to `www`
+   - Verify HTTPS on both
+
+### CI/CD Pipeline
+Two workflows are active:
+
+**ci.yml** (on PR to `main` and `release`)
+- ✅ npm ci (install dependencies)
+- ✅ TypeScript type check
+- ✅ ESLint
+- ✅ Vite build
+- ✅ SEO report (sitemap validation)
+- ✅ Axe accessibility check
+- ✅ Lighthouse performance audit
+
+**deploy.yml** (on push to `release`)
+- Build site with `npm run build`
+- Deploy `dist/` to Cloudflare Pages via wrangler-action
+- Auto-deploys production on merge to `release`
+
+### Promotion process (daily development)
+1. Work on `main` branch; commit and push
+2. Create a PR from `main` → `release`
+3. CI checks must pass (lint, build, type check, accessibility, performance)
+4. Merge to `release` (auto-deploys to production)
+5. Verify production at https://www.protradesolution.com.au/
+
+### Branch protection
+- `main`: Requires PR review + CI passing before merge (no direct pushes)
+- `release`: Requires CI passing before merge (prevents broken deployments)
 
 ## For maintainers
 
