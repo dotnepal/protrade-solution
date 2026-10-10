@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { galleryImage } from '@/lib/images'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { ssgContext } from '@/lib/ssgContext'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 import { LocalBusinessStructuredData } from '@/components/seo/StructuredData'
 
@@ -21,6 +22,7 @@ const seoData = getSeoMetadata('/', {
 export const ssgOptions: SsgOptions = {
   slug: 'index',
   routeUrl: '/',
+  context: ssgContext('/'),
   Head: () => (
     <>
       {generateSeoMetaTags(seoData)}

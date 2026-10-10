@@ -5,6 +5,7 @@ import PageHeader from '@/components/ui/PageHeader';
 import { galleryImage } from '@/lib/images';
 import { products } from '../data/products';
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { ssgContext } from '@/lib/ssgContext'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
 const seoData = getSeoMetadata('/products', {
@@ -15,6 +16,7 @@ const seoData = getSeoMetadata('/products', {
 export const ssgOptions: SsgOptions = {
   slug: 'products',
   routeUrl: '/products',
+  context: ssgContext('/products'),
   Head: () => (
     <>
       {generateSeoMetaTags(seoData)}

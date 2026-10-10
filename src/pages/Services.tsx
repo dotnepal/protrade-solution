@@ -1,4 +1,5 @@
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { ssgContext } from '@/lib/ssgContext'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 import { Link } from 'react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,6 +23,7 @@ const seoData = getSeoMetadata('/services', {
 export const ssgOptions: SsgOptions = {
   slug: 'services',
   routeUrl: '/services',
+  context: ssgContext('/services'),
   Head: () => (
     <>
       {generateSeoMetaTags(seoData)}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { ssgContext } from '@/lib/ssgContext'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
 const seoData = getSeoMetadata('/404', {
@@ -10,6 +11,7 @@ const seoData = getSeoMetadata('/404', {
 export const ssgOptions: SsgOptions = {
   slug: '404',
   routeUrl: '/404',
+  context: ssgContext('/404'),
   Head: () => (
     <>
       {generateSeoMetaTags(seoData)}
