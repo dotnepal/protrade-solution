@@ -32,6 +32,11 @@ Main menu:
         - About us
         - contact
 
+## Code contribution guideline
+
+see `./CODE_CONTRIBUTION.md`
+
+
 # Website status
 
 *Business name:* ProTrade Solution
