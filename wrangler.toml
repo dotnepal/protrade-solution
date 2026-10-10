@@ -6,8 +6,5 @@ pages_build_output_dir = "./dist"
 [vars]
 NODE_VERSION="22.16.0"
 
-[previews.vars]
+[env.preview.vars]
 NODE_VERSION="22.16.0"
-
-[assets]
-directory = "./dist"
