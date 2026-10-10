@@ -7,23 +7,13 @@ export default defineConfig({
   plugins: [
     react(),
     ssgPlugin({
-      routes: [
-        '/',
-        '/services',
-        '/products',
-        '/about',
-        '/contact',
-      ],
-      includedRoutes: [
-        '/',
-        '/services',
-        '/products',
-        '/products/hybrid-flooring',
-        '/products/laminate-flooring',
-        '/products/vinyl-flooring',
-        '/about',
-        '/contact',
-      ],
+      // Scan src/pages/ for components that export `ssgOptions`
+      pages: 'src/pages/',
+      config: {
+        // Output pre-rendered HTML alongside the regular Vite build
+        outDir: 'dist',
+        baseUrl: '',
+      },
     }),
   ],
 })
