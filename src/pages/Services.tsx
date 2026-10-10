@@ -1,5 +1,6 @@
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+import Gallery from '@/components/ui/Gallery'
 
 const seoData = getSeoMetadata('/services', {
   title: 'Services - ProTrade Solution',
@@ -34,16 +35,23 @@ export default function Services() {
         {/* Gallery Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-espresso">Gallery</h2>
-          <div className="aspect-video bg-cream flex items-center justify-center rounded-lg border-2 border-latte overflow-hidden">
-            <img
-              src="/gallery-01.webp"
-              alt="Project gallery - first image"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <p className="text-sm text-charcoal mt-2">
-            TODO: Embla carousel (issue #12) - swipe through project gallery with keyboard support
-          </p>
+          <Gallery
+            images={[
+              {
+                src: '/gallery-01.webp',
+                alt: 'Hybrid timber flooring installation example',
+              },
+              {
+                src: '/gallery-02.webp',
+                alt: 'Laminate flooring project showcase',
+              },
+              {
+                src: '/gallery-03.webp',
+                alt: 'Engineered timber installation detail',
+              },
+            ]}
+            aspectRatio="video"
+          />
         </section>
 
         {/* Services List */}
