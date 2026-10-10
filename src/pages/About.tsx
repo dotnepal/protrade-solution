@@ -1,3 +1,4 @@
+import PageHeader from '@/components/ui/PageHeader'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
@@ -18,16 +19,9 @@ export const ssgOptions: SsgOptions = {
 
 export default function About() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col">
       {/* Header */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">About ProTrade Solution</h1>
-          <p className="text-xl text-cream">
-            Your trusted flooring partner
-          </p>
-        </div>
-      </section>
+      <PageHeader title="About ProTrade Solution" intro="Your trusted flooring partner" />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto w-full px-4 py-16 flex-1">

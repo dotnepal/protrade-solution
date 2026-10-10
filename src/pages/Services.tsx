@@ -1,6 +1,18 @@
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+import { Link } from 'react-router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faRulerCombined,
+  faDoorOpen,
+  faArrowsLeftRight,
+  faBroom,
+  faTrashCan,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons'
 import Gallery from '@/components/ui/Gallery'
+import PageHeader from '@/components/ui/PageHeader'
+import { galleryImage } from '@/lib/images'
 
 const seoData = getSeoMetadata('/services', {
   title: 'Services - ProTrade Solution',
@@ -17,83 +29,66 @@ export const ssgOptions: SsgOptions = {
   ),
 };
 
+const fitting = [
+  { icon: faRulerCombined, name: 'MDF scotia', text: 'Supplied and fitted to finish the floor edge.' },
+  { icon: faDoorOpen, name: 'Doorway trims', text: 'Supplied and fitted where floors meet.' },
+  { icon: faArrowsLeftRight, name: 'Expansion trims', text: 'Fitted to allow for floating-floor movement.' },
+  { icon: faBroom, name: 'Carpet and floating floor pull-up', text: 'Old floor lifted before the new one goes down.' },
+  { icon: faTrashCan, name: 'Offcut and rubbish disposal', text: 'We take the leftovers with us.' },
+]
+
+const photos = [1, 2, 4, 6, 7, 8].map((n) => ({
+  src: galleryImage(n),
+  alt: 'Completed flooring installation',
+}))
+
 export default function Services() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-xl text-cream">
-            Complete flooring solutions for residential and commercial projects
-          </p>
+    <>
+      <PageHeader
+        title="Services"
+        intro="We specialise in hybrid timber, laminate, engineered timber and vinyl, and look after the details around them."
+      />
+
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+        <h2 className="text-4xl sm:text-5xl md:col-span-4">The finishing work</h2>
+        <ul className="md:col-span-7 md:col-start-6">
+          {fitting.map((f) => (
+            <li
+              key={f.name}
+              className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-t border-latte/50 py-6 first:border-t-0 first:pt-0"
+            >
+              <FontAwesomeIcon icon={f.icon} className="mt-1.5 text-xl text-espresso" aria-hidden="true" />
+              <div>
+                <h3 className="text-2xl">{f.name}</h3>
+                <p className="prose-body mt-1">{f.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="bg-warm-beige">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24 lg:px-10">
+          <h2 className="mb-10 text-4xl sm:text-5xl">Recent work</h2>
+          <Gallery images={photos} />
         </div>
       </section>
 
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 py-16 flex-1">
-        {/* Gallery Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-espresso">Gallery</h2>
-          <Gallery
-            images={[
-              {
-                src: '/gallery-01.webp',
-                alt: 'Hybrid timber flooring installation example',
-              },
-              {
-                src: '/gallery-02.webp',
-                alt: 'Laminate flooring project showcase',
-              },
-              {
-                src: '/gallery-03.webp',
-                alt: 'Engineered timber installation detail',
-              },
-            ]}
-            aspectRatio="video"
-          />
-        </section>
-
-        {/* Services List */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-espresso">What We Offer</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border-l-4 border-caramel pl-6 py-4">
-              <h3 className="font-bold text-xl mb-2 text-espresso">Flooring Installation</h3>
-              <ul className="space-y-2 text-charcoal">
-                <li>• Hybrid timber flooring</li>
-                <li>• Laminate flooring</li>
-                <li>• Engineering timber</li>
-                <li>• Vinyl flooring</li>
-              </ul>
-            </div>
-            <div className="border-l-4 border-caramel pl-6 py-4">
-              <h3 className="font-bold text-xl mb-2 text-espresso">Additional Services</h3>
-              <ul className="space-y-2 text-charcoal">
-                <li>• Supply and fit MDF scotia</li>
-                <li>• Doorway trims installation</li>
-                <li>• Expansion trim fitting</li>
-                <li>• Carpet removal and disposal</li>
-                <li>• Offcut and rubbish disposal</li>
-              </ul>
-            </div>
+      <section className="bg-espresso text-cream">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+          <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
+            Tell us about your project.
+          </h2>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
+            <Link to="/contact" className="btn-primary">Get a quote</Link>
+            <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
+              <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
+              +61 2 9999 9999
+            </a>
           </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-cream border-2 border-latte rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-espresso">Ready for Your Flooring Project?</h2>
-          <p className="text-charcoal mb-6">
-            Contact us today to discuss your flooring needs and get a free quote.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-caramel text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-opacity"
-          >
-            Get Started
-          </a>
-        </section>
-      </div>
-    </div>
-  );
+        </div>
+      </section>
+    </>
+  )
 }

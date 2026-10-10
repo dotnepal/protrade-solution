@@ -1,103 +1,130 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faPhone,
+  faEnvelope,
+  faLocationDot,
+  faClock,
+} from '@fortawesome/free-solid-svg-icons';
+import { routes } from '@/routes';
+
+// TODO(Phase 2): replace placeholder contact details and map embed URL
+const MAP_SRC =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.123456789!2d151.123456!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a1b1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sProTrade%20Solution!5e0!3m2!1sen!2sau!4v1234567890';
+const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Sydney+NSW+2000';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
   const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
-    <footer className="bg-espresso text-white">
-      {/* Map Section */}
-      <div className="w-full h-80 bg-charcoal relative">
-        {!mapLoaded && (
-          <button
-            onClick={() => setMapLoaded(true)}
-            className="absolute inset-0 w-full h-full bg-charcoal hover:bg-latte transition-colors flex items-center justify-center z-10"
-            aria-label="Load map"
-          >
-            <span className="text-cream">📍 Click to load map</span>
-          </button>
-        )}
-        {mapLoaded && (
-          <iframe
-            title="ProTrade Solution location"
-            width="100%"
-            height="100%"
-            style={{ border: 0 } as React.CSSProperties}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.123456789!2d151.123456!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a1b1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sProTrade%20Solution!5e0!3m2!1sen!2sau!4v1234567890"
-          />
-        )}
+    <footer className="bg-espresso text-cream">
+      <div className="mx-auto grid max-w-7xl gap-14 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+        <div className="md:col-span-5">
+          <p className="font-serif text-4xl font-medium leading-tight text-cream">
+            Talk to us about your floor.
+          </p>
+          <p className="mt-5 max-w-[46ch] text-warm-beige">
+            Supply and fitting of hybrid timber, laminate, engineered timber and
+            vinyl flooring, with trims, carpet removal and rubbish disposal.
+          </p>
+          <ul className="mt-8 space-y-4 text-lg">
+            <li className="flex items-center gap-4">
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="w-4 text-caramel"
+                aria-hidden="true"
+              />
+              <a href="tel:+61299999999" className="underline underline-offset-4 hover:text-caramel">
+                +61 2 9999 9999
+              </a>
+            </li>
+            <li className="flex items-center gap-4">
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="w-4 text-caramel"
+                aria-hidden="true"
+              />
+              <a
+                href="mailto:info@protradesolution.com.au"
+                className="underline underline-offset-4 hover:text-caramel"
+              >
+                info@protradesolution.com.au
+              </a>
+            </li>
+            <li className="flex items-center gap-4">
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                className="w-4 text-caramel"
+                aria-hidden="true"
+              />
+              Sydney, NSW 2000
+            </li>
+            <li className="flex items-start gap-4 text-base text-warm-beige">
+              <FontAwesomeIcon
+                icon={faClock}
+                className="mt-1.5 w-4 text-caramel"
+                aria-hidden="true"
+              />
+              <span>
+                Mon to Fri 8am to 5pm
+                <br />
+                Sat 9am to 2pm, Sun closed
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="md:col-span-6 md:col-start-7">
+          <div className="relative aspect-[4/3] w-full bg-charcoal md:aspect-[16/10]">
+            {mapLoaded ? (
+              <iframe
+                title="ProTrade Solution location"
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={MAP_SRC}
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
+                <FontAwesomeIcon
+                  icon={faLocationDot}
+                  size="2x"
+                  className="text-caramel"
+                  aria-hidden="true"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMapLoaded(true)}
+                  className="btn-primary"
+                >
+                  Load map
+                </button>
+                <a
+                  href={MAP_LINK}
+                  className="text-sm text-warm-beige underline underline-offset-4"
+                >
+                  Or open in Google Maps
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Footer Content */}
-      <div className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* About */}
-            <div>
-              <h3 className="font-bold mb-4 text-lg">About ProTrade</h3>
-              <p className="text-sm text-cream">
-                ProTrade Solution specialises in professional flooring
-                installation for residential and commercial projects across
-                Australia.
-              </p>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h3 className="font-bold mb-4 text-lg">Contact</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="tel:+61299999999"
-                    className="text-caramel hover:underline"
-                  >
-                    +61 2 9999 9999
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:info@protradesolution.com.au"
-                    className="text-caramel hover:underline"
-                  >
-                    info@protradesolution.com.au
-                  </a>
-                </li>
-                <li className="text-cream">Sydney, NSW 2000</li>
-              </ul>
-            </div>
-
-            {/* Hours */}
-            <div>
-              <h3 className="font-bold mb-4 text-lg">Hours</h3>
-              <ul className="space-y-1 text-sm text-cream">
-                <li>Monday–Friday: 8am–5pm</li>
-                <li>Saturday: 9am–2pm</li>
-                <li>Sunday: Closed</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-latte mt-8 pt-8 text-center text-xs text-cream">
-            <p>
-              &copy; {currentYear} ProTrade Solution. All rights reserved.
-            </p>
-            <p className="mt-2 text-charcoal">
-              <a href="/" className="hover:text-caramel">
-                Home
-              </a>
-              {' | '}
-              <a href="/contact" className="hover:text-caramel">
-                Contact
-              </a>
-              {' | '}
-              <a href="/about" className="hover:text-caramel">
-                About
-              </a>
-            </p>
-          </div>
+      <div className="border-t border-latte/50">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 text-sm text-warm-beige sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+          <p>&copy; {year} ProTrade Solution</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {routes.map((r) => (
+              <li key={r.path}>
+                <Link to={r.path} className="underline-offset-4 hover:underline">
+                  {r.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

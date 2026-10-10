@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import PageHeader from '@/components/ui/PageHeader'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
@@ -19,13 +20,9 @@ export const ssgOptions: SsgOptions = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col">
       {/* Header */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold">Page Not Found</h1>
-        </div>
-      </section>
+      <PageHeader title="Page Not Found" />
 
       {/* Content */}
       <div className="flex-1 flex items-center justify-center">

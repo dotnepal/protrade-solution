@@ -1,4 +1,8 @@
 import { Link } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
+import PageHeader from '@/components/ui/PageHeader';
+import { galleryImage } from '@/lib/images';
 import { products } from '../data/products';
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
@@ -18,81 +22,53 @@ export const ssgOptions: SsgOptions = {
   ),
 };
 
+const placeholderPhotos = [5, 12, 13, 3];
+
 export default function Products() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">Flooring Products</h1>
-          <p className="text-xl text-cream">
-            Explore our range of premium flooring options for any space
-          </p>
-        </div>
-      </section>
+    <>
+      <PageHeader
+        title="Flooring we supply"
+        intro="Hybrid timber, laminate, engineered timber and vinyl. Choose a floor, then we fit it."
+      />
 
-      {/* Products Grid */}
-      <div className="max-w-7xl mx-auto w-full px-4 py-16 flex-1">
-        <div className="mb-12">
-          <p className="text-lg text-charcoal mb-2">
-            We offer a variety of flooring solutions to suit your needs and budget:
-          </p>
-          <ul className="text-charcoal space-y-1 ml-4">
-            <li>• Hybrid timber flooring</li>
-            <li>• Laminate flooring</li>
-            <li>• Engineering timber</li>
-            <li>• Vinyl flooring</li>
-          </ul>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <Link
-              key={product.slug}
-              to={`/products/${product.slug}`}
-              className="group border-2 border-latte rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-cream hover:border-caramel"
-            >
-              <div className="aspect-square bg-warm-beige flex items-center justify-center text-charcoal font-medium overflow-hidden">
-                {product.image && (
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-                {!product.image && 'TODO: Product image'}
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-espresso group-hover:text-caramel transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-charcoal mt-3">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24 lg:px-10">
+        <ul className="space-y-20 md:space-y-28">
+          {products.map((product, i) => (
+            <li key={product.slug} className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
+              <img
+                src={galleryImage(placeholderPhotos[i % placeholderPhotos.length])}
+                alt=""
+                width={800}
+                height={600}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                className={`aspect-[4/3] w-full object-cover md:col-span-7 ${
+                  i % 2 ? 'md:order-2 md:col-start-6' : ''
+                }`}
+              />
+              <div
+                className={`md:col-span-4 ${
+                  i % 2 ? 'md:order-1 md:col-start-1' : 'md:col-start-9'
+                }`}
+              >
+                <h2 className="text-4xl">{product.name}</h2>
+                <p className="prose-body mt-4">
                   {product.description !== 'TODO: Add product description'
                     ? product.description
-                    : 'Premium flooring solution for modern spaces.'}
+                    : 'Description coming soon.'}
                 </p>
-                <p className="text-xs text-caramel font-medium mt-4 group-hover:underline">
-                  View Details →
-                </p>
+                <Link
+                  to={`/products/${product.slug}`}
+                  className="link-quiet mt-6 inline-flex items-center gap-3"
+                >
+                  View {product.name}
+                  <FontAwesomeIcon icon={faArrowRightLong} aria-hidden="true" />
+                </Link>
               </div>
-            </Link>
+            </li>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 bg-cream border-2 border-latte rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-espresso">Need Help Choosing?</h2>
-          <p className="text-charcoal mb-6">
-            Contact us for personalized recommendations and a free quote for your project.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-caramel text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-opacity"
-          >
-            Get in Touch
-          </a>
-        </div>
+        </ul>
       </div>
-    </div>
+    </>
   );
 }

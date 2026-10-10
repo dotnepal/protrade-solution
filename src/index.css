@@ -1,26 +1,92 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/libre-franklin';
 
-@font-face {
-  font-family: 'Libre Franklin';
-  src: url('/fonts/libre-franklin-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
+@theme {
+  --color-espresso: #3e2723;
+  --color-latte: #8d6e63;
+  --color-cream: #f5f1ee;
+  --color-caramel: #d97706;
+  --color-charcoal: #1f2937;
+  --color-warm-beige: #ecdcc8;
+
+  --font-sans: 'Libre Franklin Variable', system-ui, sans-serif;
+  --font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 }
 
-@font-face {
-  font-family: 'Libre Franklin';
-  src: url('/fonts/libre-franklin-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    color: var(--color-espresso);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-caramel);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--color-caramel);
+    color: var(--color-espresso);
+    padding: 0.9rem 1.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    transition: background-color 150ms, color 150ms;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-espresso);
+    color: var(--color-cream);
+  }
 
-body {
-  color: #1F2937;
-  background-color: #fff;
-}
+  .link-quiet {
+    color: var(--color-espresso);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-latte);
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+  }
+  .link-quiet:hover {
+    text-decoration-color: var(--color-caramel);
+    text-decoration-thickness: 2px;
+  }
 
-/* TODO: Add component-specific styles as needed */
+  .prose-body {
+    max-width: 62ch;
+    font-size: 1.0625rem;
+  }
+}
