@@ -1,14 +1,19 @@
 import { Link } from 'react-router';
 import { products } from '@/data/products';
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+
+const seoData = getSeoMetadata('/products', {
+  title: 'Flooring Products - ProTrade Solution',
+  description: 'Browse our range of premium flooring products.',
+})
 
 export const ssgOptions: SsgOptions = {
   slug: 'products',
   routeUrl: '/products',
   Head: () => (
     <>
-      <title>Flooring Products - ProTrade Solution</title>
-      <meta name="description" content="Browse our range of premium flooring products." />
+      {generateSeoMetaTags(seoData)}
     </>
   ),
 };

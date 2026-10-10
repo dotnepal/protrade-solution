@@ -1,12 +1,17 @@
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+
+const seoData = getSeoMetadata('/services', {
+  title: 'Services - ProTrade Solution',
+  description: 'Explore our flooring services including supply, installation, and removal.',
+})
 
 export const ssgOptions: SsgOptions = {
   slug: 'services',
   routeUrl: '/services',
   Head: () => (
     <>
-      <title>Services - ProTrade Solution</title>
-      <meta name="description" content="Explore our flooring services including supply, installation, and removal." />
+      {generateSeoMetaTags(seoData)}
     </>
   ),
 };

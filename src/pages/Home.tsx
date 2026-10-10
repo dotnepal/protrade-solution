@@ -1,12 +1,19 @@
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+import { LocalBusinessStructuredData } from '@/components/seo/StructuredData'
+
+const seoData = getSeoMetadata('/', {
+  title: 'ProTrade Solution - Professional Flooring Specialists',
+  description: 'ProTrade Solution specialises in hybrid timber flooring, laminate flooring, engineering timber and vinyl. Professional supply and installation services.',
+})
 
 export const ssgOptions: SsgOptions = {
   slug: 'index',
   routeUrl: '/',
   Head: () => (
     <>
-      <title>ProTrade Solution - Professional Flooring Specialists</title>
-      <meta name="description" content="ProTrade Solution specialises in hybrid timber flooring, laminate flooring, engineering timber and vinyl. Professional supply and installation services." />
+      {generateSeoMetaTags(seoData)}
+      <LocalBusinessStructuredData />
     </>
   ),
 };
