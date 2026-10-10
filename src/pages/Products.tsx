@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { products } from '@/data/products';
+import { products } from '../data/products';
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 

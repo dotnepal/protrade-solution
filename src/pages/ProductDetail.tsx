@@ -1,23 +1,11 @@
 import { useParams, Link } from 'react-router';
-import { products } from '@/data/products';
-import type { SsgOptions } from 'vite-plugin-ssg/utils'
-import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
+import { products } from '../data/products';
 
-export const ssgOptions: SsgOptions = {
-  slug: 'product-detail',
-  routeUrl: '/products/hybrid-timber',
-  Head: () => {
-    const seoData = getSeoMetadata('/products/hybrid-timber', {
-      title: 'Product Details - ProTrade Solution',
-      description: 'View detailed information about our flooring products.',
-    })
-    return (
-      <>
-        {generateSeoMetaTags(seoData)}
-      </>
-    )
-  },
-};
+/**
+ * Product Detail Page Component
+ * Used for client-side routing (when navigating via React Router)
+ * For static pre-rendering, see ProductHybridTimberPage.tsx, ProductLaminatePage.tsx, etc.
+ */
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
