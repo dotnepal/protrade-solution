@@ -1,0 +1,9 @@
+# Cloudflare Pages redirect rules
+# See: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# TODO: Apex domain redirect (when DNS is set up)
+# http://protradesolution.com.au/* https://www.protradesolution.com.au/:splat 301!
+
+# Catch-all for 404 (per-route HTML files should be served first)
+# This is a fallback in case a route is not pre-rendered
+# /404 /.netlify/functions/404 200

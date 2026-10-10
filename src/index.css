@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url('/fonts/libre-franklin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libre Franklin';
+  src: url('/fonts/libre-franklin-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-charcoal;
+  background-color: #fff;
+}
+
+/* TODO: Add component-specific styles as needed */
