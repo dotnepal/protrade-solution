@@ -1,4 +1,6 @@
 import PageHeader from '@/components/ui/PageHeader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faEnvelope, faLocationDot, faClock, faIdCard } from '@fortawesome/free-solid-svg-icons'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
@@ -17,96 +19,61 @@ export const ssgOptions: SsgOptions = {
   ),
 };
 
+const details = [
+  { icon: faPhone, label: 'Phone', node: <a href="tel:+61XXXXXXXXXX" className="link-quiet text-xl">+61 TODO: phone number</a> },
+  { icon: faEnvelope, label: 'Email', node: <a href="mailto:info@protradesolution.com.au" className="link-quiet text-xl">info@protradesolution.com.au</a> },
+  { icon: faLocationDot, label: 'Address', node: <p className="text-xl">TODO: street address, city, state, postcode</p> },
+  {
+    icon: faClock,
+    label: 'Hours',
+    node: (
+      <p className="text-lg">
+        TODO: Monday to Friday, HH:MM to HH:MM
+        <br />
+        TODO: Saturday, HH:MM to HH:MM
+        <br />
+        TODO: Sunday
+      </p>
+    ),
+  },
+  { icon: faIdCard, label: 'Business details', node: <p className="text-lg">ABN: TODO</p> },
+]
+
 export default function Contact() {
   return (
-    <div className="flex flex-col">
-      {/* Header */}
-      <PageHeader title="Contact ProTrade Solution" intro="Get in touch for a free consultation" />
+    <>
+      <PageHeader
+        title="Contact"
+        intro="Call or email to talk through your floor and get a quote."
+      />
 
-      {/* Contact Info */}
-      <div className="max-w-7xl mx-auto w-full px-4 py-16 flex-1">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: Contact Details */}
-          <div>
-            <h2 className="text-2xl font-bold mb-8 text-espresso">Get in Touch</h2>
-
-            <div className="space-y-8">
-              {/* Phone */}
-              <div>
-                <h3 className="font-bold text-lg text-espresso mb-2">Call Us</h3>
-                <a
-                  href="tel:+61XXXXXXXXXX"
-                  className="text-caramel hover:underline text-lg font-medium block"
-                >
-                  +61 TODO: Phone
-                </a>
-                <p className="text-sm text-charcoal mt-1">
-                  TODO: Update with actual phone number
-                </p>
-              </div>
-
-              {/* Email */}
-              <div>
-                <h3 className="font-bold text-lg text-espresso mb-2">Email Us</h3>
-                <a
-                  href="mailto:info@protradesolution.com.au"
-                  className="text-caramel hover:underline font-medium block"
-                >
-                  info@protradesolution.com.au
-                </a>
-                <p className="text-sm text-charcoal mt-1">
-                  TODO: Update with actual email
-                </p>
-              </div>
-
-              {/* Address */}
-              <div>
-                <h3 className="font-bold text-lg text-espresso mb-2">Visit Us</h3>
-                <p className="text-charcoal font-medium">
-                  TODO: Street Address
-                </p>
-                <p className="text-charcoal">
-                  TODO: City, State, Postcode
-                </p>
-              </div>
-
-              {/* Hours */}
-              <div>
-                <h3 className="font-bold text-lg text-espresso mb-2">Business Hours</h3>
-                <div className="text-charcoal space-y-1">
-                  <p>TODO: Monday - Friday: HH:MM - HH:MM</p>
-                  <p>TODO: Saturday: HH:MM - HH:MM</p>
-                  <p>TODO: Sunday: Closed</p>
-                </div>
-              </div>
-
-              {/* ABN */}
-              <div>
-                <h3 className="font-bold text-lg text-espresso mb-2">Business Details</h3>
-                <p className="text-charcoal">
-                  ABN: TODO
-                </p>
-              </div>
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+        <dl className="md:col-span-7">
+          {details.map((d) => (
+            <div
+              key={d.label}
+              className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-t border-latte/50 py-7 first:border-t-0 first:pt-0"
+            >
+              <dt className="mt-1.5">
+                <FontAwesomeIcon icon={d.icon} className="text-xl text-espresso" aria-hidden="true" />
+                <span className="sr-only">{d.label}</span>
+              </dt>
+              <dd>{d.node}</dd>
             </div>
-          </div>
+          ))}
+        </dl>
 
-          {/* Right: Map */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6 text-espresso">Location</h2>
-            <div className="aspect-video bg-cream rounded-lg border-2 border-latte flex items-center justify-center">
-              <div className="text-center p-8">
-                <p className="text-charcoal font-medium">Service Area Map</p>
-                <p className="text-sm text-charcoal mt-2">
-                  TODO: Embed Google Maps iframe (lazy-loaded) - Issue #12
-                </p>
-              </div>
-            </div>
-            <p className="text-sm text-charcoal mt-4">
-              We serve the greater TODO: area. Contact us to check if we service your location.
+        <div className="md:col-span-4 md:col-start-9">
+          <div className="flex aspect-[4/5] items-center justify-center bg-warm-beige p-8 text-center">
+            <p className="prose-body">
+              TODO: service area map (lazy-loaded embed with a plain map link as fallback).
             </p>
           </div>
+          <p className="prose-body mt-4 text-sm">
+            We serve TODO: service area. Contact us to check we cover your location.
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
