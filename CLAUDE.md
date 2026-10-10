@@ -46,20 +46,34 @@ Main menu:
 
 # Project Architecture
 - Follows trunk based development
+- Delivery phases:
+    * Phase 1 - foundations and a working site: architecture, repo hygiene, scaffold, design/UX, CI/CD, SEO structure, placeholder content
+    * Phase 2 - real business content and SEO values
+- Implementation plan: `tasks/2026-10-10-IMPLEMENTATION-PLAN.md` (local only, `tasks/` is gitignored)
 
 # Technical stack
-- **Frontend:** Next.js (TypeScript, React) with static export
-- **UI/UX:** Tailwind CSS
+- **Frontend:** Vite + React 19 (TypeScript) with React Router, pre-rendered to static HTML via vite-plugin-ssg (mirrors dotnepal/hooxygen)
+- **UI/UX:** Tailwind CSS 4 (via @tailwindcss/vite)
 - **Backend:** None (static HTML only; contact info only in v1, no form)
 - **Database:** None
-- **Deployment:** Next.js static export (`output: 'export'` in `next.config`) → static HTML in `out/` → Cloudflare Pages
+- **Deployment:** Vite build + SSG → static HTML in `dist/` → Cloudflare Pages (wrangler)
 - **Color Palette:** Original Coffee theme (finalized, see "Design - Color Palette")
+- **Project structure:** mirrors dotnepal/hooxygen `src/`: `pages/`, `components/{layout,ui,seo,sections}`, `data/` (typed TS data files), `routes.ts` as the single route list, `hooks/`, `lib/`, `utils/`, `assets/`. MDX rejected for content.
+- **Routes:** `/`, `/services`, `/products` (list page), `/products/:slug` (dedicated page per product), `/about`, `/contact`, plus a 404 page
+- **Package manager:** npm
+- **Font:** Libre Franklin (self-hosted)
+- **Analytics:** None for now
+- **Gallery:** carousel on `/services` (Embla); photos pre-resized WebP in `src/assets/img/gallery/`, raw originals in `images/` (temporary)
+- **Quality bar:** follow web best practices; WCAG Level AA is the minimum accessibility standard
 
 ## Github repository & project information
 
 *Github repository:* git@github.com:dotnepal/protrade-solution.git
 *Gh cli:* Use Gh cli to interact with Git
 *Project dashboard:* https://github.com/orgs/dotnepal/projects/1/views/1
+*Milestone:* v1.0.0 (covers both phases)
+*Phase field:* board custom field `Phase` (options: Phase 1, Phase 2). Set with Gh cli, e.g. `gh project item-edit 1 --owner dotnepal --url <issue-url> --field Phase --value "Phase 1"`
+*Priority field:* board custom field `Priority Level` (P0 blocker, P1 important, P2 nice to have). The built-in `Priority` field is uneditable, so it is unused
 *Project dashboard lanes definition:* (the board's Status field already has all 5 lanes)
 - Backlog: newer issues will be added here, anything undecided, needs approval
   from stakeholders
@@ -70,10 +84,13 @@ Main menu:
 - Done: PR has been merged, issue closed, labelled as `done`
 
 **Architecture notes:**
-- Development: Full Next.js framework (hot reload, TypeScript support)
+- Development: Vite dev server (hot reload, TypeScript support)
 - Output: Pure HTML/CSS/JS (no runtime dependencies)
-- SEO: Fully server-side generated (static HTML, OG tags, sitemap)
+- SEO: Pre-rendered at build time (static HTML, OG tags, JSON-LD, sitemap script)
 - Forms: None in v1 (contact info only). Formspree is the planned option if a form is added later
+
+# SEO & Measurement
+- Canonical host: www.protradesolution.com.au (apex redirects to www)
 
 # CI/CD Deployment
 - The pages will be hosted in Github
@@ -81,6 +98,8 @@ Main menu:
 - Github will have following branches, and follow trunk-based development
     * main - for active development
     * release - triggers deployment to cloudflare pages
+- Promotion: open a PR from `main` into `release`; CI must pass before merge. Merge deploys
+- CI runs on PRs to `main` and `release`
 
 # Core Questions That Unlock Architecture Decisions
 
@@ -137,7 +156,7 @@ Main menu:
 - Simple, reliable, no backend
 
 **How it works:**
-- Form HTML is static (built in Next.js)
+- Form HTML is static (built in React)
 - On submit, POST to Formspree endpoint
 - Formspree sends submission email to your inbox
 - User sees success/error message
