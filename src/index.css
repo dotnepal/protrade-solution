@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/fraunces';
-@import '@fontsource-variable/libre-franklin';
+@import '@fontsource-variable/newsreader';
+@import '@fontsource-variable/hanken-grotesk';
 
 @theme {
   --color-espresso: #3e2723;
@@ -10,8 +10,8 @@
   --color-charcoal: #1f2937;
   --color-warm-beige: #ecdcc8;
 
-  --font-sans: 'Libre Franklin Variable', system-ui, sans-serif;
-  --font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  --font-serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
 }
 
 @layer base {
