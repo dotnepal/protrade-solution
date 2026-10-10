@@ -11,7 +11,7 @@ export const ssgOptions: SsgOptions = {
       <meta property="og:url" content="https://www.protradesolution.com.au/products/laminate-flooring" />
     </>
   ),
--e;
+};
 
 export default function ProductLaminateFlooringPage() {
   return (
@@ -28,4 +28,4 @@ export default function ProductLaminateFlooringPage() {
       <a href="/products">Back to Products</a>
     </div>
   )
--e;
+}
