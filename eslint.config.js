@@ -2,11 +2,16 @@ import js from '@eslint/js';
 import ts from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
 export default [
-  { ignores: ['dist', 'node_modules', '.wrangler'] },
+  { ignores: ['**/dist', '**/node_modules', '.wrangler', 'scaffold-test'] },
   js.configs.recommended,
   ...ts.configs.recommended,
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+  },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {

@@ -11,10 +11,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/inject-scripts.mjs && node scripts/generate-sitemap.mjs",
     "build:seo-check": "npm run build && node scripts/seo-report.mjs",
+    "cf:dev": "npm run build && wrangler pages dev dist/",
+    "cf:deploy:pages": "npm run build && wrangler pages deploy dist/",
+    "cf:deploy": "npm run cf:deploy:mailer && npm run cf:deploy:pages",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "seo:report": "node scripts/seo-report.mjs",
+    "sitemap:generate": "node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
     "@fontsource-variable/hanken-grotesk": "^5.3.0",
