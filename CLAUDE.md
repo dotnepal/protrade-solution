@@ -34,6 +34,7 @@ Main menu:
 
 # Website status
 
+*Business name:* ProTrade Solution
 *Domain:* protradesolution.com.au
 *Status:* Draft
 *Last Updated at:* TBD
@@ -49,16 +50,30 @@ Main menu:
 # Technical stack
 - **Frontend:** Next.js (TypeScript, React) with static export
 - **UI/UX:** Tailwind CSS
-- **Backend:** None (static HTML only; Formspree for contact form)
+- **Backend:** None (static HTML only; contact info only in v1, no form)
 - **Database:** None
-- **Deployment:** Next.js `next export` → static HTML files → Cloudflare Pages
-- **Color Palette:** Soft coffee texture - TBD
+- **Deployment:** Next.js static export (`output: 'export'` in `next.config`) → static HTML in `out/` → Cloudflare Pages
+- **Color Palette:** Original Coffee theme (finalized, see "Design - Color Palette")
+
+## Github repository & project information
+
+*Github repository:* git@github.com:dotnepal/protrade-solution.git
+*Gh cli:* Use Gh cli to interact with Git
+*Project dashboard:* https://github.com/orgs/dotnepal/projects/1/views/1
+*Project dashboard lanes definition:* (the board's Status field already has all 5 lanes)
+- Backlog: newer issues will be added here, anything undecided, needs approval
+  from stakeholders
+- Ready: issue is ready to be picked and worked on
+- In progress: issue is currently in progress, labelled as `in-progress`
+- In review: issue has been worked on, git branch pushed, PR created and
+  labelled as `code-review` 
+- Done: PR has been merged, issue closed, labelled as `done`
 
 **Architecture notes:**
 - Development: Full Next.js framework (hot reload, TypeScript support)
 - Output: Pure HTML/CSS/JS (no runtime dependencies)
 - SEO: Fully server-side generated (static HTML, OG tags, sitemap)
-- Forms: Integrated with Formspree (no backend needed)
+- Forms: None in v1 (contact info only). Formspree is the planned option if a form is added later
 
 # CI/CD Deployment
 - The pages will be hosted in Github
@@ -111,6 +126,7 @@ Main menu:
 - Frequent deployments during active development, then slower cadence post-launch
 
 ## Contact Form Implementation
+**Status:** Not in v1. Kept for future reference.
 **Service:** Formspree
 **Why:** Simple, no backend required, GDPR-compliant, handles email delivery and spam filtering
 
