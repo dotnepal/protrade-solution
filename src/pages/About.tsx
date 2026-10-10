@@ -1,3 +1,7 @@
+import PageHeader from '@/components/ui/PageHeader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAward, faHandshake, faScrewdriverWrench, faHeadset, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { galleryImage } from '@/lib/images'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 
@@ -16,115 +20,80 @@ export const ssgOptions: SsgOptions = {
   ),
 };
 
+const pillars = [
+  { icon: faAward, name: 'Experience', text: 'TODO: Years of industry experience and expertise' },
+  { icon: faScrewdriverWrench, name: 'Quality', text: 'Premium materials and careful workmanship on every project.' },
+  { icon: faHandshake, name: 'Service', text: 'Professional installation from consultation to completion.' },
+  { icon: faHeadset, name: 'Support', text: 'Dedicated customer support and after-sales service.' },
+]
+
+const commitments = [
+  'TODO: Commitment to customer satisfaction and quality workmanship',
+  'TODO: Sustainable and responsible business practices',
+  'TODO: Building lasting relationships with customers and suppliers',
+]
+
 export default function About() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">About ProTrade Solution</h1>
-          <p className="text-xl text-cream">
-            Your trusted flooring partner
+    <>
+      <PageHeader
+        title="About ProTrade Solution"
+        intro="Flooring specialists for residential and commercial projects."
+      />
+
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+        <img
+          src={galleryImage(6)}
+          alt="TODO: company or team photo"
+          width={600}
+          height={800}
+          loading="lazy"
+          className="aspect-[3/4] w-full object-cover md:col-span-5"
+        />
+        <div className="md:col-span-6 md:col-start-7">
+          <h2 className="text-4xl sm:text-5xl">Our story</h2>
+          <p className="prose-body mt-6">
+            ProTrade Solution supplies and fits hybrid timber, laminate,
+            engineered timber and vinyl flooring for homes and commercial
+            spaces.
+          </p>
+          <p className="prose-body mt-4">
+            TODO: Add company history, founding date and mission statement.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto w-full px-4 py-16 flex-1">
-        {/* Company Story */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-espresso">Our Story</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="text-lg text-charcoal mb-4">
-                TODO: Add company history, founding date, and mission statement
-              </p>
-              <p className="text-charcoal mb-4">
-                ProTrade Solution specialises in providing high-quality flooring solutions for residential and commercial projects throughout Australia.
-              </p>
-              <p className="text-charcoal">
-                TODO: Add more about company values and commitment to customers
-              </p>
-            </div>
-            <div className="aspect-square bg-warm-beige rounded-lg flex items-center justify-center border-2 border-latte">
-              <p className="text-charcoal text-center">TODO: Company image or team photo</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-espresso">Why Choose ProTrade</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="border border-latte rounded-lg p-6 bg-cream">
-              <h3 className="font-bold text-lg text-espresso mb-3">Experience</h3>
-              <p className="text-charcoal text-sm">
-                TODO: Years of industry experience and expertise
-              </p>
-            </div>
-            <div className="border border-latte rounded-lg p-6 bg-cream">
-              <h3 className="font-bold text-lg text-espresso mb-3">Quality</h3>
-              <p className="text-charcoal text-sm">
-                Premium materials and superior craftsmanship in every project
-              </p>
-            </div>
-            <div className="border border-latte rounded-lg p-6 bg-cream">
-              <h3 className="font-bold text-lg text-espresso mb-3">Service</h3>
-              <p className="text-charcoal text-sm">
-                Professional installation from consultation to completion
-              </p>
-            </div>
-            <div className="border border-latte rounded-lg p-6 bg-cream">
-              <h3 className="font-bold text-lg text-espresso mb-3">Support</h3>
-              <p className="text-charcoal text-sm">
-                Dedicated customer support and after-sales service
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Team */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-espresso">Our Team</h2>
-          <p className="text-lg text-charcoal mb-8">
-            TODO: Add information about team members, their expertise, and credentials
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="text-center">
-                <div className="aspect-square bg-warm-beige rounded-lg flex items-center justify-center border-2 border-latte mb-4">
-                  <p className="text-charcoal">TODO: Team member {i} photo</p>
+      <section className="bg-warm-beige">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+          <h2 className="text-4xl sm:text-5xl md:col-span-4">Why choose ProTrade</h2>
+          <ul className="md:col-span-7 md:col-start-6">
+            {pillars.map((p) => (
+              <li
+                key={p.name}
+                className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-t border-latte/60 py-6 first:border-t-0 first:pt-0"
+              >
+                <FontAwesomeIcon icon={p.icon} className="mt-1.5 text-xl text-espresso" aria-hidden="true" />
+                <div>
+                  <h3 className="text-2xl">{p.name}</h3>
+                  <p className="prose-body mt-1">{p.text}</p>
                 </div>
-                <h3 className="font-bold text-lg text-espresso">Team Member {i}</h3>
-                <p className="text-sm text-charcoal">TODO: Position and bio</p>
-              </div>
+              </li>
             ))}
-          </div>
-        </section>
-
-        {/* Values/Mission */}
-        <section className="bg-cream border-2 border-latte rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6 text-espresso">Our Commitment</h2>
-          <ul className="space-y-3 text-charcoal">
-            <li className="flex items-start">
-              <span className="text-caramel font-bold mr-3">✓</span>
-              <span>TODO: Commitment to customer satisfaction and quality workmanship</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-caramel font-bold mr-3">✓</span>
-              <span>TODO: Sustainable and responsible business practices</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-caramel font-bold mr-3">✓</span>
-              <span>TODO: Continuous improvement and innovation in flooring solutions</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-caramel font-bold mr-3">✓</span>
-              <span>TODO: Building lasting relationships with customers and suppliers</span>
-            </li>
           </ul>
-        </section>
-      </div>
-    </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
+        <h2 className="text-4xl sm:text-5xl md:col-span-4">Our commitment</h2>
+        <ul className="space-y-4 md:col-span-7 md:col-start-6">
+          {commitments.map((c) => (
+            <li key={c} className="flex items-start gap-4">
+              <FontAwesomeIcon icon={faCheck} className="mt-1.5 text-espresso" aria-hidden="true" />
+              <span className="prose-body">{c}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }

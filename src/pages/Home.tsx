@@ -1,3 +1,14 @@
+import { Link } from 'react-router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faLayerGroup,
+  faTree,
+  faRuler,
+  faDroplet,
+  faArrowRightLong,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons'
+import { galleryImage } from '@/lib/images'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
 import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 import { LocalBusinessStructuredData } from '@/components/seo/StructuredData'
@@ -18,81 +29,131 @@ export const ssgOptions: SsgOptions = {
   ),
 };
 
+const offerings = [
+  {
+    icon: faTree,
+    name: 'Hybrid timber',
+    text: 'Stable, water-resistant planks with a timber look, for busy family homes.',
+  },
+  {
+    icon: faLayerGroup,
+    name: 'Laminate',
+    text: 'Hard-wearing floating floors in a wide range of finishes.',
+  },
+  {
+    icon: faRuler,
+    name: 'Engineered timber',
+    text: 'Real timber surface on a stable core, supplied and fitted.',
+  },
+  {
+    icon: faDroplet,
+    name: 'Vinyl',
+    text: 'Waterproof plank for kitchens, laundries and bathrooms.',
+  },
+]
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
-      <section className="bg-cream py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold mb-6 text-espresso">
-                ProTrade Solution
-              </h1>
-              <p className="text-xl text-charcoal mb-4">
-                Your trusted partner for premium flooring solutions
-              </p>
-              <p className="text-lg text-charcoal mb-8">
-                We specialise in hybrid timber flooring, laminate flooring, engineering timber, and vinyl flooring. We also supply and fit MDF scotia, doorway trims, expansion trims, and handle carpet removal and disposal.
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="/services"
-                  className="bg-caramel text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-opacity"
-                >
-                  Explore Services
-                </a>
-                <a
-                  href="/products"
-                  className="bg-latte text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-opacity"
-                >
-                  View Products
-                </a>
-              </div>
-            </div>
-            <div className="aspect-square bg-warm-beige rounded-lg flex items-center justify-center border-2 border-latte">
-              <p className="text-charcoal text-center">TODO: Hero image</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Services */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-espresso">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border-l-4 border-caramel pl-6 py-4">
-              <h3 className="font-bold text-xl mb-2 text-espresso">Quality Materials</h3>
-              <p className="text-charcoal">We source premium flooring materials that last.</p>
-            </div>
-            <div className="border-l-4 border-caramel pl-6 py-4">
-              <h3 className="font-bold text-xl mb-2 text-espresso">Expert Installation</h3>
-              <p className="text-charcoal">Professional fitting by experienced technicians.</p>
-            </div>
-            <div className="border-l-4 border-caramel pl-6 py-4">
-              <h3 className="font-bold text-xl mb-2 text-espresso">Complete Service</h3>
-              <p className="text-charcoal">From selection to installation to disposal.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-espresso text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Space?</h2>
-          <p className="text-lg mb-8 text-cream">
-            Contact us today for a free consultation
+    <>
+      <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-14 sm:px-8 md:grid-cols-12 md:pb-32 md:pt-24 lg:px-10">
+        <div className="md:col-span-7 md:pr-6 md:pt-8">
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl">
+            Timber floors, supplied and fitted properly.
+          </h1>
+          <p className="prose-body mt-8 text-lg">
+            ProTrade Solution lays hybrid timber, laminate, engineered timber
+            and vinyl, then finishes the job with scotia, trims, carpet removal
+            and rubbish disposal.
           </p>
-          <a
-            href="/contact"
-            className="inline-block bg-caramel text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-opacity"
-          >
-            Get in Touch
-          </a>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+            <Link to="/contact" className="btn-primary">
+              Get a quote
+            </Link>
+            <Link to="/services" className="link-quiet">
+              See our work
+            </Link>
+          </div>
+        </div>
+
+        <figure className="relative md:col-span-5 md:mt-16">
+          <img
+            src={galleryImage(1)}
+            alt="A newly laid timber-look floor running the length of a hallway"
+            width={600}
+            height={800}
+            fetchPriority="high"
+            className="aspect-[3/4] w-full object-cover"
+          />
+          <figcaption className="bg-espresso px-6 py-5 text-cream md:absolute md:-bottom-10 md:-left-12 md:max-w-[18rem]">
+            Hallway floor, fitted and trimmed.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section className="bg-warm-beige">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28 lg:px-10">
+          <h2 className="text-4xl sm:text-5xl md:col-span-4">
+            The floors we supply and fit.
+          </h2>
+          <ul className="md:col-span-7 md:col-start-6">
+            {offerings.map((o) => (
+              <li
+                key={o.name}
+                className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-t border-latte/60 py-7 first:border-t-0 first:pt-0"
+              >
+                <FontAwesomeIcon
+                  icon={o.icon}
+                  className="mt-2 text-xl text-espresso"
+                  aria-hidden="true"
+                />
+                <div>
+                  <h3 className="text-3xl">{o.name}</h3>
+                  <p className="prose-body mt-2">{o.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-    </div>
-  );
+
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-32 lg:px-10">
+        <img
+          src={galleryImage(3)}
+          alt="An open-plan living area with a light timber-look floor"
+          width={800}
+          height={600}
+          loading="lazy"
+          className="aspect-[4/3] w-full object-cover md:col-span-7"
+        />
+        <div className="md:col-span-4 md:col-start-9">
+          <h2 className="text-4xl sm:text-5xl">From first measure to last trim.</h2>
+          <p className="prose-body mt-6">
+            We supply the floor, fit it, finish the edges and take the offcuts
+            away with us.
+          </p>
+          <Link to="/services" className="link-quiet mt-8 inline-flex items-center gap-3">
+            All services
+            <FontAwesomeIcon icon={faArrowRightLong} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-espresso text-cream">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+          <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
+            Planning a new floor?
+          </h2>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
+            <Link to="/contact" className="btn-primary">
+              Get a quote
+            </Link>
+            <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
+              <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
+              +61 2 9999 9999
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
