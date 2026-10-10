@@ -1,17 +1,11 @@
 import { useParams, Link } from 'react-router';
-import { products } from '@/data/products';
-import type { SsgOptions } from 'vite-plugin-ssg/utils'
+import { products } from '../data/products';
 
-export const ssgOptions: SsgOptions = {
-  slug: 'product-detail',
-  routeUrl: '/products/hybrid-timber',
-  Head: () => (
-    <>
-      <title>Product Details - ProTrade Solution</title>
-      <meta name="description" content="View detailed information about our flooring products." />
-    </>
-  ),
-};
+/**
+ * Product Detail Page Component
+ * Used for client-side routing (when navigating via React Router)
+ * For static pre-rendering, see ProductHybridTimberPage.tsx, ProductLaminatePage.tsx, etc.
+ */
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
