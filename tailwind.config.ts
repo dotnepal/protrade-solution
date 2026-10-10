@@ -9,6 +9,7 @@ export default {
         latte: '#8D6E63',
         cream: '#F5F1EE',
         caramel: '#D97706',
+        'caramel-dark': '#B35905',
         charcoal: '#1F2937',
         'warm-beige': '#ECDCC8',
       },
