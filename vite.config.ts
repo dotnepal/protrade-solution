@@ -20,6 +20,16 @@ export default defineConfig({
         // Output pre-rendered HTML alongside the regular Vite build
         outDir: 'dist',
         baseUrl: '',
+        // The SSG plugin runs its own Vite server with configFile: false,
+        // so the '@' alias must be re-declared for pre-rendering.
+        vite: {
+          plugins: [
+            {
+              name: 'ssg-alias',
+              config: () => ({ resolve: { alias: { '@': path.resolve(__dirname, './src') } } }),
+            },
+          ],
+        },
         html: {
           // Blocking script: runs before paint to prevent FOUC for Nepali users.
           // Reads ho-gas-lang from localStorage; if 'ne', sets data-lang="ne" on <html>

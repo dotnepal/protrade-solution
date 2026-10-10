@@ -6,6 +6,7 @@
 
 import ProductView from '@/components/ui/ProductView';
 import type { SsgOptions } from 'vite-plugin-ssg/utils';
+import { ssgContext } from '@/lib/ssgContext'
 import { products } from '../data/products';
 
 const product = products.find((p) => p.slug === 'vinyl')!;
@@ -13,6 +14,7 @@ const product = products.find((p) => p.slug === 'vinyl')!;
 export const ssgOptions: SsgOptions = {
   slug: 'product-vinyl',
   routeUrl: '/products/vinyl',
+  context: ssgContext('/products/vinyl'),
   Head: () => (
     <>
       <title>{product.name} - ProTrade Solution</title>
