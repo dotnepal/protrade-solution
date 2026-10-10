@@ -1,3 +1,16 @@
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: 'index',
+  routeUrl: '/',
+  Head: () => (
+    <>
+      <title>ProTrade Solution - Professional Flooring Specialists</title>
+      <meta name="description" content="ProTrade Solution specialises in hybrid timber flooring, laminate flooring, engineering timber and vinyl. Professional supply and installation services." />
+    </>
+  ),
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">

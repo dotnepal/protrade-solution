@@ -1,5 +1,17 @@
 import { useParams, Link } from 'react-router';
 import { products } from '@/data/products';
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: 'product-detail',
+  routeUrl: '/products/hybrid-timber',
+  Head: () => (
+    <>
+      <title>Product Details - ProTrade Solution</title>
+      <meta name="description" content="View detailed information about our flooring products." />
+    </>
+  ),
+};
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();

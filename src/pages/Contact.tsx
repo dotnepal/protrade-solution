@@ -1,3 +1,16 @@
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: 'contact',
+  routeUrl: '/contact',
+  Head: () => (
+    <>
+      <title>Contact Us - ProTrade Solution</title>
+      <meta name="description" content="Get in touch with ProTrade Solution for your flooring needs." />
+    </>
+  ),
+};
+
 export default function Contact() {
   return (
     <div className="min-h-screen flex flex-col">

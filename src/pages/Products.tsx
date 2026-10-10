@@ -1,5 +1,17 @@
 import { Link } from 'react-router';
 import { products } from '@/data/products';
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: 'products',
+  routeUrl: '/products',
+  Head: () => (
+    <>
+      <title>Flooring Products - ProTrade Solution</title>
+      <meta name="description" content="Browse our range of premium flooring products." />
+    </>
+  ),
+};
 
 export default function Products() {
   return (

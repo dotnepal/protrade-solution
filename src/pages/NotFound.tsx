@@ -1,4 +1,16 @@
 import { Link } from 'react-router';
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: '404',
+  routeUrl: '/404',
+  Head: () => (
+    <>
+      <title>Page Not Found - ProTrade Solution</title>
+      <meta name="description" content="This page could not be found." />
+    </>
+  ),
+};
 
 export default function NotFound() {
   return (

@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  @apply text-charcoal;
+  color: #1F2937;
   background-color: #fff;
 }
 

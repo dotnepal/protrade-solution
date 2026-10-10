@@ -1,3 +1,16 @@
+import type { SsgOptions } from 'vite-plugin-ssg/utils'
+
+export const ssgOptions: SsgOptions = {
+  slug: 'services',
+  routeUrl: '/services',
+  Head: () => (
+    <>
+      <title>Services - ProTrade Solution</title>
+      <meta name="description" content="Explore our flooring services including supply, installation, and removal." />
+    </>
+  ),
+};
+
 export default function Services() {
   return (
     <div className="min-h-screen flex flex-col">
