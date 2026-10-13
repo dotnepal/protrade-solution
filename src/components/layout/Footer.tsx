@@ -12,7 +12,7 @@ import { routes } from '@/routes';
 // TODO(Phase 2): replace placeholder contact details and map embed URL
 const MAP_SRC =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.123456789!2d151.123456!3d-33.8688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a1b1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sProTrade%20Solution!5e0!3m2!1sen!2sau!4v1234567890';
-const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Sydney+NSW+2000';
+const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Melbourne+Victoria+3000';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -36,8 +36,8 @@ export default function Footer() {
                 className="w-4 text-caramel"
                 aria-hidden="true"
               />
-              <a href="tel:+61299999999" className="underline underline-offset-4 hover:text-caramel">
-                +61 2 9999 9999
+              <a href="tel:+61450546870" className="underline underline-offset-4 hover:text-caramel">
+                0450 546 870
               </a>
             </li>
             <li className="flex items-center gap-4">
@@ -59,7 +59,7 @@ export default function Footer() {
                 className="w-4 text-caramel"
                 aria-hidden="true"
               />
-              Sydney, NSW 2000
+              Melbourne, Victoria 3000
             </li>
             <li className="flex items-start gap-4 text-base text-warm-beige">
               <FontAwesomeIcon
@@ -67,11 +67,7 @@ export default function Footer() {
                 className="mt-1.5 w-4 text-caramel"
                 aria-hidden="true"
               />
-              <span>
-                Mon to Fri 8am to 5pm
-                <br />
-                Sat 9am to 2pm, Sun closed
-              </span>
+              <span>Mon to Sat 7am – 8pm</span>
             </li>
           </ul>
         </div>

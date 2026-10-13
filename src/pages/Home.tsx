@@ -7,6 +7,12 @@ import {
   faDroplet,
   faArrowRightLong,
   faPhone,
+  faScrewdriverWrench,
+  faHandshake,
+  faBuilding,
+  faAward,
+  faLocationDot,
+  faHeadset,
 } from '@fortawesome/free-solid-svg-icons'
 import { galleryImage } from '@/lib/images'
 import type { SsgOptions } from 'vite-plugin-ssg/utils'
@@ -15,8 +21,8 @@ import { generateSeoMetaTags, getSeoMetadata } from '@/lib/seoHelpers'
 import { LocalBusinessStructuredData } from '@/components/seo/StructuredData'
 
 const seoData = getSeoMetadata('/', {
-  title: 'ProTrade Solution - Professional Flooring Specialists',
-  description: 'ProTrade Solution specialises in hybrid timber flooring, laminate flooring, engineering timber and vinyl. Professional supply and installation services.',
+  title: 'Pro Trade Solutions – Melbourne Timber Flooring Specialists',
+  description: 'Melbourne-based timber flooring company specialising in hybrid timber, laminate, engineered timber and vinyl. Residential and commercial supply and installation.',
 })
 
 export const ssgOptions: SsgOptions = {
@@ -54,18 +60,52 @@ const offerings = [
   },
 ]
 
+const reasons = [
+  {
+    icon: faScrewdriverWrench,
+    heading: 'Quality Workmanship',
+    text: 'Professional flooring solutions with attention to every detail.',
+  },
+  {
+    icon: faHandshake,
+    heading: 'Reliable & Professional Service',
+    text: 'Clear communication and dependable service from start to finish.',
+  },
+  {
+    icon: faBuilding,
+    heading: 'Residential & Commercial',
+    text: 'Flooring solutions for homes, offices, and commercial spaces.',
+  },
+  {
+    icon: faAward,
+    heading: 'Quality Materials',
+    text: 'A focus on durable, stylish, and long-lasting flooring.',
+  },
+  {
+    icon: faLocationDot,
+    heading: 'Melbourne-Based',
+    text: 'Proudly serving Melbourne and surrounding suburbs.',
+  },
+  {
+    icon: faHeadset,
+    heading: 'Customer Satisfaction',
+    text: "Committed to delivering results that meet our customers' expectations.",
+  },
+]
+
 export default function Home() {
   return (
     <>
+      {/* 1. Hero */}
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-14 sm:px-8 md:grid-cols-12 md:pb-32 md:pt-24 lg:px-10">
         <div className="md:col-span-7 md:pr-6 md:pt-8">
           <h1 className="text-5xl sm:text-6xl lg:text-8xl">
-            Timber floors, supplied and fitted properly.
+            Melbourne's Trusted Timber Flooring Specialists
           </h1>
           <p className="prose-body mt-8 text-lg">
-            ProTrade Solution lays hybrid timber, laminate, engineered timber
-            and vinyl, then finishes the job with scotia, trims, carpet removal
-            and rubbish disposal.
+            Pro Trade Solutions is a Melbourne-based timber flooring company
+            delivering high-quality flooring solutions for residential and
+            commercial properties across Melbourne and surrounding suburbs.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
             <Link to="/contact" className="btn-primary">
@@ -92,11 +132,17 @@ export default function Home() {
         </figure>
       </section>
 
+      {/* 2. What we supply and fit */}
       <section className="bg-warm-beige">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28 lg:px-10">
-          <h2 className="text-4xl sm:text-5xl md:col-span-4">
-            The floors we supply and fit.
-          </h2>
+          <div className="md:col-span-4">
+            <h2 className="text-4xl sm:text-5xl">
+              The floors we supply and fit.
+            </h2>
+            <p className="prose-body mt-4">
+              Whether you're building a new home, renovating an existing property, or upgrading a commercial space, we supply and fit quality flooring solutions tailored to your needs.
+            </p>
+          </div>
           <ul className="md:col-span-7 md:col-start-6">
             {offerings.map((o) => (
               <li
@@ -118,41 +164,79 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-32 lg:px-10">
-        <img
-          src={galleryImage(3)}
-          alt="An open-plan living area with a light timber-look floor"
-          width={800}
-          height={600}
-          loading="lazy"
-          className="aspect-[4/3] w-full object-cover md:col-span-7"
-        />
-        <div className="md:col-span-4 md:col-start-9">
-          <h2 className="text-4xl sm:text-5xl">From first measure to last trim.</h2>
-          <p className="prose-body mt-6">
-            We supply the floor, fit it, finish the edges and take the offcuts
-            away with us.
-          </p>
-          <Link to="/services" className="link-quiet mt-8 inline-flex items-center gap-3">
-            All services
-            <FontAwesomeIcon icon={faArrowRightLong} aria-hidden="true" />
-          </Link>
+      {/* 3. Why Choose Us */}
+      <section>
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:py-28 lg:px-10">
+          <div className="mb-14 max-w-2xl">
+            <h2 className="text-4xl sm:text-5xl">Why Choose ProTrade?</h2>
+            <p className="prose-body mt-4 text-lg">
+              We believe that beautiful flooring is the foundation of every great
+              space. Here's what sets us apart.
+            </p>
+          </div>
+          <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {reasons.map((r) => (
+              <li key={r.heading} className="flex gap-5">
+                <FontAwesomeIcon
+                  icon={r.icon}
+                  className="mt-1 shrink-0 text-2xl text-espresso"
+                  aria-hidden="true"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold">{r.heading}</h3>
+                  <p className="prose-body mt-2">{r.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="bg-espresso text-cream">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
-          <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
-            Planning a new floor?
-          </h2>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-            <Link to="/contact" className="btn-primary">
-              Get a quote
+      {/* 5. Full service, start to finish */}
+      <section className="bg-warm-beige">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-32 lg:px-10">
+          <img
+            src={galleryImage(3)}
+            alt="An open-plan living area with a light timber-look floor"
+            width={800}
+            height={600}
+            loading="lazy"
+            className="aspect-[4/3] w-full object-cover md:col-span-7"
+          />
+          <div className="md:col-span-4 md:col-start-9">
+            <h2 className="text-4xl sm:text-5xl">From first measure to last trim.</h2>
+            <p className="prose-body mt-6">
+              We supply the floor, fit it, finish the edges with scotia and
+              trims, and take the offcuts and rubbish away — so you're left with
+              nothing to do.
+            </p>
+            <Link to="/services" className="link-quiet mt-8 inline-flex items-center gap-3">
+              All services
+              <FontAwesomeIcon icon={faArrowRightLong} aria-hidden="true" />
             </Link>
-            <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
-              <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
-              +61 2 9999 9999
-            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA */}
+      <section className="bg-espresso text-cream">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
+          <p className="text-sm uppercase tracking-widest text-latte">
+            Quality Flooring. Professional Results.
+          </p>
+          <div className="mt-4 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
+              Planning a new floor?
+            </h2>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
+              <Link to="/contact" className="btn-primary">
+                Get a quote
+              </Link>
+              <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
+                <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
+                +61 2 9999 9999
+              </a>
+            </div>
           </div>
         </div>
       </section>
