@@ -29,12 +29,10 @@ const details = [
     node: (
       <p className="text-lg">
         Monday to Saturday, 7:00am – 8:00pm
-        <br />
-        Sunday: Closed
       </p>
     ),
   },
-  { icon: faIdCard, label: 'Business details', node: <p className="text-lg">ABN: TODO</p> },
+  { icon: faIdCard, label: 'Business details', node: <p className="text-lg"><strong>ABN:</strong> 67 831 685 996</p> },
 ]
 
 export default function Contact() {
@@ -60,17 +58,6 @@ export default function Contact() {
             </div>
           ))}
         </dl>
-
-        <div className="md:col-span-4 md:col-start-9">
-          <div className="flex aspect-[4/5] items-center justify-center bg-warm-beige p-8 text-center">
-            <p className="prose-body">
-              TODO: service area map (lazy-loaded embed with a plain map link as fallback).
-            </p>
-          </div>
-          <p className="prose-body mt-4 text-sm">
-            We serve all over Melbourne and surrounding areas. Contact us to check we cover your location.
-          </p>
-        </div>
       </section>
     </>
   );

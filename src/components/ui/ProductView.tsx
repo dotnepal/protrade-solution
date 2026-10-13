@@ -29,8 +29,8 @@ export default function ProductView({ product }: { product: FlooringProduct }) {
           <h1 className="text-5xl sm:text-6xl">{product.name}</h1>
           <p className="prose-body mt-8 text-lg">{product.description}</p>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
-            <Link to="/contact" className="btn-primary">Get a quote</Link>
-            <a href="tel:+61299999999" className="link-quiet inline-flex items-center gap-3">
+            <Link to="/contact" className="btn-primary">Free quote and measurement</Link>
+            <a href="tel:+61450546870" className="link-quiet inline-flex items-center gap-3">
               <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
               Call us
             </a>

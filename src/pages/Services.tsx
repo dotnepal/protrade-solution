@@ -49,7 +49,7 @@ export default function Services() {
     <>
       <PageHeader
         title="Services"
-        intro="We specialise in hybrid timber, laminate, engineered timber and vinyl, and look after the details around them."
+        intro="We specialise in hybrid timber, laminate, engineered timber and vinyl, and look after the details around them. We provide services all over Melbourne and surroundings."
       />
 
       <section className="bg-warm-beige">
@@ -84,13 +84,13 @@ export default function Services() {
       <section className="bg-espresso text-cream">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
           <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
-            Tell us about your project.
+            Call us to get 
           </h2>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-            <Link to="/contact" className="btn-primary">Get a quote</Link>
+            <Link to="/contact" className="btn-primary">free quote and measurement</Link>
             <a href="tel:+61450546870" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
               <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
-              0450 546 870
+              Call us
             </a>
           </div>
         </div>
