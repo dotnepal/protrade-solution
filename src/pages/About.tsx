@@ -28,9 +28,9 @@ const pillars = [
 ]
 
 const commitments = [
-  'TODO: Commitment to customer satisfaction and quality workmanship',
-  'TODO: Sustainable and responsible business practices',
-  'TODO: Building lasting relationships with customers and suppliers',
+  'Every installation is completed to the highest standard — we take pride in our workmanship and stand behind every job we deliver.',
+  'We source quality materials responsibly and operate with honesty and transparency in everything we do.',
+  'We build long-term relationships with our customers and suppliers based on trust, reliability, and mutual respect.',
 ]
 
 export default function About() {
@@ -58,14 +58,22 @@ export default function About() {
             spaces.
           </p>
           <p className="prose-body mt-4">
-            TODO: Add company history, founding date and mission statement.
+            Our mission is to provide Melbourne customers with premium timber
+            flooring solutions through exceptional workmanship, reliable service,
+            and competitive pricing.
+          </p>
+          <p className="prose-body mt-4">
+            TODO: Add company history, founding date, if applicable
           </p>
         </div>
       </section>
 
-      <section className="bg-warm-beige">
+      <section className="border-t border-latte/60">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
-          <h2 className="text-4xl sm:text-5xl md:col-span-4">Why choose ProTrade</h2>
+          <div className="md:col-span-4">
+            <h2 className="text-4xl sm:text-5xl">Why choose ProTrade</h2>
+            <p className="prose-body mt-3">We bring skill, attention to detail, and genuine pride to every project.</p>
+          </div>
           <ul className="md:col-span-7 md:col-start-6">
             {pillars.map((p) => (
               <li
@@ -84,7 +92,10 @@ export default function About() {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
-        <h2 className="text-4xl sm:text-5xl md:col-span-4">Our commitment</h2>
+        <div className="md:col-span-4">
+          <h2 className="text-4xl sm:text-5xl">Our commitment</h2>
+          <p className="prose-body mt-3">The values that guide every project we take on.</p>
+        </div>
         <ul className="space-y-4 md:col-span-7 md:col-start-6">
           {commitments.map((c) => (
             <li key={c} className="flex items-start gap-4">

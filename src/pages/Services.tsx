@@ -52,8 +52,19 @@ export default function Services() {
         intro="We specialise in hybrid timber, laminate, engineered timber and vinyl, and look after the details around them."
       />
 
+      <section className="bg-warm-beige">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24 lg:px-10">
+          <h2 className="text-4xl sm:text-5xl">Recent work</h2>
+          <p className="prose-body mb-10 mt-4 max-w-2xl">Our team is committed to delivering professional results that combine elegance, durability, and functionality.</p>
+          <Gallery images={photos} />
+        </div>
+      </section>
+
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
-        <h2 className="text-4xl sm:text-5xl md:col-span-4">The finishing work</h2>
+        <div className="md:col-span-4">
+          <h2 className="text-4xl sm:text-5xl">We handle the details</h2>
+          <p className="prose-body mt-4">Every job includes the finishing touches that make it complete.</p>
+        </div>
         <ul className="md:col-span-7 md:col-start-6">
           {fitting.map((f) => (
             <li
@@ -70,13 +81,6 @@ export default function Services() {
         </ul>
       </section>
 
-      <section className="bg-warm-beige">
-        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24 lg:px-10">
-          <h2 className="mb-10 text-4xl sm:text-5xl">Recent work</h2>
-          <Gallery images={photos} />
-        </div>
-      </section>
-
       <section className="bg-espresso text-cream">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-16 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
           <h2 className="max-w-[22ch] text-4xl text-cream sm:text-5xl">
@@ -84,9 +88,9 @@ export default function Services() {
           </h2>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
             <Link to="/contact" className="btn-primary">Get a quote</Link>
-            <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
+            <a href="tel:+61450546870" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
               <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
-              +61 2 9999 9999
+              0450 546 870
             </a>
           </div>
         </div>

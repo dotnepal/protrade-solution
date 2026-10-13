@@ -20,19 +20,17 @@ export const ssgOptions: SsgOptions = {
 };
 
 const details = [
-  { icon: faPhone, label: 'Phone', node: <a href="tel:+61XXXXXXXXXX" className="link-quiet text-xl">+61 TODO: phone number</a> },
+  { icon: faPhone, label: 'Phone', node: <a href="tel:+61450546870" className="link-quiet text-xl">0450 546 870</a> },
   { icon: faEnvelope, label: 'Email', node: <a href="mailto:info@protradesolution.com.au" className="link-quiet text-xl">info@protradesolution.com.au</a> },
-  { icon: faLocationDot, label: 'Address', node: <p className="text-xl">TODO: street address, city, state, postcode</p> },
+  { icon: faLocationDot, label: 'Address', node: <p className="text-xl">Melbourne, Victoria 3000</p> },
   {
     icon: faClock,
     label: 'Hours',
     node: (
       <p className="text-lg">
-        TODO: Monday to Friday, HH:MM to HH:MM
+        Monday to Saturday, 7:00am – 8:00pm
         <br />
-        TODO: Saturday, HH:MM to HH:MM
-        <br />
-        TODO: Sunday
+        Sunday: Closed
       </p>
     ),
   },
@@ -44,7 +42,7 @@ export default function Contact() {
     <>
       <PageHeader
         title="Contact"
-        intro="Call or email to talk through your floor and get a quote."
+        intro="Call or email to talk about your floor and get a quote."
       />
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
@@ -70,7 +68,7 @@ export default function Contact() {
             </p>
           </div>
           <p className="prose-body mt-4 text-sm">
-            We serve TODO: service area. Contact us to check we cover your location.
+            We serve all over Melbourne and surrounding areas. Contact us to check we cover your location.
           </p>
         </div>
       </section>
