@@ -21,7 +21,7 @@ export const ssgOptions: SsgOptions = {
 };
 
 const pillars = [
-  { icon: faAward, name: 'Experience', text: 'TODO: Years of industry experience and expertise' },
+  { icon: faAward, name: 'Experience', text: 'Years of industry experience and expertise' },
   { icon: faScrewdriverWrench, name: 'Quality', text: 'Premium materials and careful workmanship on every project.' },
   { icon: faHandshake, name: 'Service', text: 'Professional installation from consultation to completion.' },
   { icon: faHeadset, name: 'Support', text: 'Dedicated customer support and after-sales service.' },
@@ -44,7 +44,7 @@ export default function About() {
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 md:grid-cols-12 md:py-24 lg:px-10">
         <img
           src={galleryImage(6)}
-          alt="TODO: company or team photo"
+          alt="Flooring work photo"
           width={600}
           height={800}
           loading="lazy"
@@ -61,9 +61,6 @@ export default function About() {
             Our mission is to provide Melbourne customers with premium timber
             flooring solutions through exceptional workmanship, reliable service,
             and competitive pricing.
-          </p>
-          <p className="prose-body mt-4">
-            TODO: Add company history, founding date, if applicable
           </p>
         </div>
       </section>

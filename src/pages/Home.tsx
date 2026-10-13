@@ -109,7 +109,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Free quote and measurement
             </Link>
             <Link to="/services" className="link-quiet">
               See our work
@@ -230,11 +230,11 @@ export default function Home() {
             </h2>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
               <Link to="/contact" className="btn-primary">
-                Get a quote
+                Free quote and measurement
               </Link>
-              <a href="tel:+61299999999" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
+              <a href="tel:+61450546870" className="inline-flex items-center gap-3 text-lg underline underline-offset-4">
                 <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
-                +61 2 9999 9999
+                Call us
               </a>
             </div>
           </div>

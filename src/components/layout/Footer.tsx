@@ -37,7 +37,7 @@ export default function Footer() {
                 aria-hidden="true"
               />
               <a href="tel:+61450546870" className="underline underline-offset-4 hover:text-caramel">
-                0450 546 870
+                0450 546 870 <br/>Call us to get free quote and measurement
               </a>
             </li>
             <li className="flex items-center gap-4">
@@ -61,13 +61,17 @@ export default function Footer() {
               />
               Melbourne, Victoria 3000
             </li>
-            <li className="flex items-start gap-4 text-base text-warm-beige">
+            <li className="flex items-center gap-4">
               <FontAwesomeIcon
                 icon={faClock}
-                className="mt-1.5 w-4 text-caramel"
+                className="w-4 text-caramel"
                 aria-hidden="true"
               />
-              <span>Mon to Sat 7am – 8pm</span>
+			  <p>Office Hour:</p>
+			  <p>
+				  Monday to Saturday <br />
+				  7:00am – 8:00pm
+			  </p>
             </li>
           </ul>
         </div>
