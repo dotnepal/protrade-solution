@@ -2,14 +2,10 @@
 name = "protrade-solution"
 compatibility_date = "2026-10-01"
 pages_build_output_dir = "./dist"
-route = "protradesolution.com.au"
 
 [vars]
 NODE_VERSION="22.16.0"
 ENVIRONMENT = "production"
-
-[previews.vars]
-ENVIRONMENT = "preview"
 
 [env.preview.vars]
 NODE_VERSION="22.16.0"
