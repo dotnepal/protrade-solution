@@ -90,3 +90,18 @@
     font-size: 1.0625rem;
   }
 }
+
+.main-logo-title-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.main-logo-title-wrapper img {
+  align-items: flex-start;
+  padding: 2px;
+}
+
+.main-logo-title-wrapper h1 {
+  margin-left: 10px;
+  align-content: center;
+}
