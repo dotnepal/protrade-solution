@@ -18,13 +18,11 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link
-          to="/"
-          className="font-serif text-2xl font-medium tracking-tight text-espresso"
-        >
-          ProTrade
-          <span className="ml-2 font-sans text-sm font-normal text-latte">
-            Solution
-          </span>
+          to="/" className="font-serif text-2xl font-medium tracking-tight text-espresso" >
+		  <div className="main-logo-title-wrapper">
+			<img src='/logo.jpg' alt="ProTrade Solution logo" title="ProTrade Solution logo" width="64px" height="auto" />
+			<h1>ProTrade Solution</h1>
+		  </div>
         </Link>
 
         <ul className="hidden items-center gap-10 md:flex">
